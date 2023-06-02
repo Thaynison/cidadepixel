@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>	
+	    <title>Cidade Pixel | O melhor servidor de RP da América Latina</title>
+	    <link href="/styles/style.css" rel="stylesheet" type="text/css" />	
+		<link href="/styles/avisos.css" rel="stylesheet" type="text/css" />	
+		<link rel="icon" href="img/px.png">
+	</head>
+	<body>
+		<audio autoplay loop id="music">
+			<source src="audio.mp3" type="audio/mpeg">
+		</audio>
+		<video autoplay muted loop id="myVideo">
+		    <source src="video.mp4" type="video/mp4">
+		</video>
+
+		<span>
+
+			<section id="loginDiscord" style="display: none;">
+				<div class="aviso-discord">
+					<img src="img/darps.png" alt="">
+					<div class="login">
+						<h1>Bem-Vindo!</h1>
+						<h2>Faça login com discord ou registre-se</h2>
+						<button onclick="loginWithDiscord()" class="discord-buttom">
+							<a>Entrar com o Discord</a>
+						</button>
+					</div> 
+				</div>
+			</section>
+
+		</span>
+
+		<div class="top-bar">
+			<div class="left-bar">
+				<button onclick="loginWithHome()" class="barr1"><a>HOME</a></button>
+				<button onclick="loginWithVip()" class="barr1"><a>VIP</a></button>
+				<button onclick="loginWithNoticias()" class="barr1"><a>NOTÍCIAS</a></button>
+				<button onclick="loginWithComoJogar()" class="barr2"><a>COMO JOGAR</a></button>
+			</div>
+			<div class="rigth-bar">
+				<button onclick="loginDiscordDiscord()"><a>LOGIN</a></button>
+			</div>
+		</div>
+
+    </body>
+	<script type="text/javascript">
+		var music = document.getElementById("music");
+		music.volume = 0.6;
+		document.addEventListener("keypress",(event) => {
+			if(event.key == "p"){
+				if(music.paused){
+					music.play();
+				} else {
+					music.pause();
+				}
+			}
+		});
+	</script>
+	<script>
+		function loginDiscordDiscord() {
+		  var loginSection = document.getElementById("loginDiscord");
+		  loginSection.style.display = "block";
+		}
+	</script>
+	<script>
+		const CLIENT_ID = '1054105105064013975'; // Insira o seu Client ID do Discord aqui
+		const REDIRECT_URI = 'https://thaynison.vercel.app/paginas/dashboard.html'; // URL de redirecionamento após o login
+	
+		function loginWithDiscord() {
+			window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify`;
+		}
+	</script>
+</html>
