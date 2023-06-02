@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidade Pixel | O melhor servidor de RP da América Latina</title>
+    <link rel="icon" href="../img/px.png">
+</head>
+<body>
+    <h2>Olá, <span id="username"></span>!</h2>
+    <h2 style="display: none;">Olá, <span id="userid"></span>!</h2>
+</body>
+<script>
+    const token = getTokenFromURL();
+    getUserData(token);
+
+    function getTokenFromURL() {
+        const params = new URLSearchParams(window.location.hash.substr(1));
+        return params.get('access_token');
+    }
+
+    function getUserData(token) {
+        axios.get('https://discord.com/api/users/@me', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            const userData = response.data;
+            document.getElementById('username').textContent = userData.username;
+            document.getElementById('userid').textContent = userData.id;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+</script>
+</html>
